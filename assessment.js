@@ -7,7 +7,7 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-
+    return 'Hello World!';
 }
 
 /*
@@ -23,8 +23,21 @@ function helloWorld() {
              lambdaSchool(8); // returns 8
 */
 
-function lambdaSchool() {
-
+function lambdaSchool(num) {
+    if(num > 0){
+      if(num % 3 === 0 && num % 5 === 0){
+          return 'Lambda School';
+      }
+      if(num % 3 === 0){
+          return 'Lambda';
+      }
+      if(num % 5 === 0){
+          return 'School';
+      }
+      if(num % 3 != 0 || num % 5 != 5){
+        return num;
+      }    
+    }
 }
 
 /*
@@ -38,8 +51,21 @@ function lambdaSchool() {
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
+function longestString(strs) {
+    strLengths = [];
 
+    // find length of each string in array of strings
+    for(let i = 0; i < strs.length; i++){
+        strLengths.push(strs[i].length);
+    }
+
+    //  find largest length in array of lengths
+    let longestLength = Math.max(...strLengths);
+
+    // find index of largest length in array of lengths
+    let longestIndex = strLengths.indexOf(longestLength);
+
+    return strs[longestIndex];
 }
 
 /*
@@ -63,8 +89,17 @@ function longestString() {
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
 */
 
-function computeUserAverageAge() {
+function computeUserAverageAge(users) {
+    let totalAge = 0;
+    let averageAge = 0;
 
+    for(let i = 0; i < users.length; i++){
+        totalAge += users[i]['age'];
+    }
+
+    averageAge = totalAge / users.length;
+
+    return Math.round(averageAge);
 }
 
 module.exports = {
